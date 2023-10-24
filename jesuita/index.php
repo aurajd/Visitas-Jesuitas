@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <a href="..">Volver</a>
     <a href="crear.php">Crear nuevo jesuita</a>
     <?php
         require "jesuita.php";

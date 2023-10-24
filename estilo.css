@@ -1,0 +1,31 @@
+html,body{
+    height: 100%; 
+    margin: 0;
+    position: relative;
+}
+
+div {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    line-height: 200px;
+    width: 100%;
+}
+
+a{
+    font-size: 3rem;
+    float: left;
+    width: 30%;
+    height: 100%;
+    margin: 0 1.6666%;
+    text-decoration: none;
+    color: black;
+    background-color: lightgray;
+    text-align: center;
+}
+
+a:hover{
+    background-color: gray;
+}
