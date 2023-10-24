@@ -1,16 +1,12 @@
 <?php
-
-    class CrudJesuita{
-
-        private $servidorbd = "localhost";
-        private $usuario = "root";
-        private $contraseña = "";
-        private $basededatos = "jesuitas";
+    class Jesuita{
         private $conexion;
         public $resultadoAccion = null;
 
         public function __construct() {
-            $this->conexion = new mysqli($this->servidorbd, $this->usuario, $this->contraseña, $this->basededatos);
+            require 'datosConexion.php';
+            $this->conexion = new mysqli($servidorbd, $usuario, $contraseña, $basededatos);
+            $this->conexion->set_charset("utf8");
         }
 
         public function leer(){

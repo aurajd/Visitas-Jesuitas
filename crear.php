@@ -9,8 +9,8 @@
 <body>
     <a href="index.php">Volver al inicio</a>
     <?php
-        require "crudJesuita.php";
-        $crud = new CrudJesuita();
+        require "jesuita.php";
+        $crud = new Jesuita();
         if (isset($_GET["enviar"])) {
             $idJesuita = $_GET["idJesuita"];
             $nombre = $_GET["nombre"];

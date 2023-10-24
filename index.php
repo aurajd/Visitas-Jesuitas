@@ -12,8 +12,8 @@
 <body>
     <a href="crear.php">Crear nuevo jesuita</a>
     <?php
-        require "crudJesuita.php";
-        $crud = new CrudJesuita();
+        require "jesuita.php";
+        $crud = new Jesuita();
         if(isset($_GET["borrar"])){
             $idJesuita = $_GET["idJesuita"];
             $crud->eliminarFila($idJesuita);
