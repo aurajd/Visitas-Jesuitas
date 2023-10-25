@@ -22,9 +22,15 @@
                 <h2>Modificación lugar</h2>
                 <form action="modificar.php">
                     <div>
-                        <label for="ip">IP:</label>
+                        <label for="ipOriginal">IP Original:</label>
                         <?php
-                            echo "<input type='text' name='ip' value='".$datosLugar['ip']."' readonly>";
+                            echo "<input type='text' name='ipOriginal' value='".$datosLugar['ip']."' readonly>";
+                        ?>
+                    </div>
+                    <div>
+                        <label for="ip">IP Nueva (Puedes dejarla igual):</label>
+                        <?php
+                            echo "<input type='text' name='ip' value='".$datosLugar['ip']."'>";
                         ?>
                     </div>
                     <div>

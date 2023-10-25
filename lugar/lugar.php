@@ -42,7 +42,8 @@
                     }else{
                         $consultaAnadir = "INSERT INTO lugar VALUES ('". $ip."','".$lugar."','".$descripcion."');";
                     }
-                    try {
+                    try{
+                        echo $consultaAnadir;
                         $this->conexion -> query($consultaAnadir);
                         $this->resultadoAccion =  "El lugar ha sido introducido con éxito";
                     } catch (mysqli_sql_exception $e) {
@@ -55,16 +56,16 @@
         }
 
 
-        public function modificarFila($ip, $lugar, $descripcion){
+        public function modificarFila($ipOriginal, $ip, $lugar, $descripcion){
             if(empty($descripcion)){
                 $consultaModificacion = "UPDATE lugar 
                 SET ip = '".$ip."', lugar = '".$lugar."', descripcion = NULL
-                WHERE ip = '".$ip."';";
+                WHERE ip = '".$ipOriginal."';";
             }
             else{
                 $consultaModificacion = "UPDATE lugar 
                 SET ip = '".$ip."', lugar = '".$lugar."', descripcion = '".$descripcion."'
-                WHERE ip = '".$ip."';";
+                WHERE ip = '".$ipOriginal."';";
             }
             $this->conexion -> query($consultaModificacion);
             $this->resultadoAccion =  "Modificación realizada con éxito";

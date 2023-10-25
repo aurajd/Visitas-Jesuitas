@@ -44,10 +44,10 @@
             }
         }
 
-        public function modificarFila($id, $nombre, $firma){
+        public function modificarFila($idOriginal, $id, $nombre, $firma){
             $consultaModificacion = "UPDATE jesuita 
             SET idJesuita = ".$id.", nombre = '".$nombre."', firma = '".$firma."'
-            WHERE idJesuita = ".$id.";";
+            WHERE idJesuita = ".$idOriginal.";";
             $this-> conexion -> query($consultaModificacion);
             $this->resultadoAccion = "Jesuita modificado con éxito";
         }

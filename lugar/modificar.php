@@ -12,10 +12,11 @@
         if(isset($_GET["modificar"])){
             require "lugar.php";
             $lugarAnadir = new Lugar();
+            $ipOriginal = $_GET["ipOriginal"];
             $ip = $_GET["ip"];
             $lugar = $_GET["lugar"];
             $descripcion = $_GET["descripcion"];
-            $lugarAnadir->modificarFila($ip,$lugar,$descripcion);
+            $lugarAnadir->modificarFila($ipOriginal,$ip,$lugar,$descripcion);
             echo "<h3>".$lugarAnadir->resultadoAccion."</h3>";
         }
     ?>

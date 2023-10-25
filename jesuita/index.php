@@ -21,10 +21,13 @@
             echo "<h3>".$crud->resultadoAccion."</h3>";
         }
         if(isset($_GET["modificar"])){
+            $idJesuitaOriginal = $_GET["idJesuitaOriginal"];
             $idJesuita = $_GET["idJesuita"];
             $nombre = $_GET["nombre"];
             $firma = $_GET["firma"];
-            $crud->modificarFila($idJesuita,$nombre,$firma);
+            //Esto da fatal error si cambiamos la id de un jesuita con visitas realizada, porque no tiene on update cascade
+            //Es un problema de la base de datos no del programa 
+            $crud->modificarFila($idJesuitaOriginal,$idJesuita,$nombre,$firma);
             echo "<h3>".$crud->resultadoAccion."</h3>";
         }
     ?>
@@ -59,6 +62,7 @@
             </td>
             <td>
                 <form action='modificar.php' method='get'> 
+                    <input type='hidden' name='idJesuitaOriginal' value='<?php echo $jesuita['idJesuita'] ?>'>
                     <input type='hidden' name='idJesuita' value='<?php echo $jesuita['idJesuita'] ?>'>
                     <input type='hidden' name='nombre' value='<?php echo $jesuita['nombre'] ?>'>
                     <input type='hidden' name='firma' value='<?php echo $jesuita['firma'] ?>'>
