@@ -10,7 +10,7 @@
     <a href="index.html">Volver atrás</a>
     <main>
         <?php
-            require "visita.php";
+            require "../clases/visita.php";
             $visita = new Visita();
         ?>
         <table>

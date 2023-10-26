@@ -14,21 +14,18 @@
             echo "<h2>Debes Introducir una IP</h2>";
         }else{
             $ip = $_GET["ip"];
-            require "lugar.php";
+            require "../clases/lugar.php";
             $lugar = new Lugar();
             $datosLugar = $lugar -> consultaIndividual($ip);
             if(isset($datosLugar)){
                 ?>
                 <h2>Modificación lugar</h2>
                 <form action="modificar.php">
+                    <?php
+                        echo "<input type='text' name='ipOriginal' value='".$datosLugar['ip']."' hidden>";
+                    ?>
                     <div>
-                        <label for="ipOriginal">IP Original:</label>
-                        <?php
-                            echo "<input type='text' name='ipOriginal' value='".$datosLugar['ip']."' readonly>";
-                        ?>
-                    </div>
-                    <div>
-                        <label for="ip">IP Nueva (Puedes dejarla igual):</label>
+                        <label for="ip">IP</label>
                         <?php
                             echo "<input type='text' name='ip' value='".$datosLugar['ip']."'>";
                         ?>

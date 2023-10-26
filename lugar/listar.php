@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista lugares</title>
-    <link rel="stylesheet" href="estilo_crud.css">
+    <link rel="stylesheet" href="../css/lugar.css">
 </head>
 <body>
     <a href="index.html">Volver atrás</a>
     <main>
         <?php
-            require "lugar.php";
+            require "../clases/lugar.php";
             $lugar = new Lugar();
         ?>
         <table>

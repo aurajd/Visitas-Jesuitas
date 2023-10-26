@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear filas</title>
-    <link rel="stylesheet" href="../css/jesuitas.css">
+    <title>Añadir jesuita</title>
+    <link rel="stylesheet" href="../css/lugar.css">
 </head>
 <body>
-    <a href="index.php">Volver al inicio</a>
+    <a href="index.html">Volver atrás</a>
     <?php
-        require "jesuita.php";
-        $crud = new Jesuita();
         if (isset($_GET["enviar"])) {
+            require "../clases/jesuita.php";
+            $jesuita = new Jesuita();
             $idJesuita = $_GET["idJesuita"];
             $nombre = $_GET["nombre"];
             $firma = $_GET["firma"];
-            $crud->validarAnadirFila($idJesuita,$nombre,$firma);
-            echo "<h3>".$crud->resultadoAccion."</h3>";
+            $resultado = $jesuita->AnadirFila($idJesuita, $nombre, $firma);
+            echo "<h3>".$resultado."</h3>";
         }
     ?>
-    <form action="crear.php" method="get">
-        <h2>Creación nuevos jesuitas</h2>
+    <form action="#.php" method="get">
+        <h2>Creación nuevos lugares</h2>
         <div>
-            <label for="idJesuita">IdJesuita:</label>
+            <label for="idJesuita">Número de puesto:</label>
             <input type="text" name="idJesuita">
         </div>
         <div>

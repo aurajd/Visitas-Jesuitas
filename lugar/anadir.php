@@ -10,27 +10,27 @@
     <a href="index.html">Volver atrás</a>
     <?php
         if (isset($_GET["enviar"])) {
-            require "lugar.php";
+            require "../clases/lugar.php";
             $lugarAnadir = new Lugar();
             $ip = $_GET["ip"];
             $lugar = $_GET["lugar"];
             $descripcion = $_GET["descripcion"];
-            $lugarAnadir->validarAnadirFila($ip,$lugar,$descripcion);
-            echo "<h3>".$lugarAnadir->resultadoAccion."</h3>";
+            $resultado = $lugarAnadir->AnadirFila($ip,$lugar,$descripcion);
+            echo "<h3>".$resultado."</h3>";
         }
     ?>
     <form action="#.php" method="get">
         <h2>Creación nuevos lugares</h2>
         <div>
-            <label for="idJesuita">IP:</label>
+            <label for="ip">IP:</label>
             <input type="text" name="ip">
         </div>
         <div>
-            <label for="nombre">Lugar:</label>
+            <label for="lugar">Lugar:</label>
             <input type="text" name="lugar">
         </div>
         <div>
-            <label for="firma">Descripción:</label>
+            <label for="descripcion">Descripción:</label>
             <input type="text" name="descripcion">
         </div>
         <input type="submit" name="enviar">

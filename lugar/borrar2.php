@@ -14,7 +14,7 @@
             echo "<h2>Debes Introducir una IP</h2>";
         }else{
             $ip = $_GET["ip"];
-            require "lugar.php";
+            require "../clases/lugar.php";
             $lugar = new Lugar();
             $datosLugar = $lugar -> consultaIndividual($ip);
             if(isset($datosLugar)){
