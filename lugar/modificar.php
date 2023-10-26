@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borrar lugar</title>
+    <title>Modificar lugar</title>
     <link rel="stylesheet" href="estilo_crud.css">
 </head>
 <body>
@@ -16,6 +16,8 @@
             $ip = $_GET["ip"];
             $lugar = $_GET["lugar"];
             $descripcion = $_GET["descripcion"];
+            //Esto da fatal error si cambiamos la ip de un lugar con visitas realizada, porque no tiene on update cascade
+            //Es un problema de la base de datos no del programa 
             $lugarAnadir->modificarFila($ipOriginal,$ip,$lugar,$descripcion);
             echo "<h3>".$lugarAnadir->resultadoAccion."</h3>";
         }

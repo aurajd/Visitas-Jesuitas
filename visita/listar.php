@@ -3,41 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista lugares</title>
+    <title>lugar</title>
     <link rel="stylesheet" href="estilo_crud.css">
 </head>
 <body>
     <a href="index.html">Volver atrás</a>
     <main>
         <?php
-            require "lugar.php";
-            $lugar = new Lugar();
+            require "visita.php";
+            $visita = new Visita();
         ?>
         <table>
             <tr>
                 <th>
+                    idVisita
+                </th>
+                <th>
+                    idJesuita
+                </th>
+                <th>
                     IP
                 </th>
                 <th>
-                    Lugar
-                </th>
-                <th>
-                    Descripción
+                    Fecha-Hora
                 </th>
             </tr>
             <?php
-                $arraylugares = $lugar->leer();
-                foreach ($arraylugares as $lugar) {
+                $arrayVisitas = $visita->leer();
+                foreach ($arrayVisitas as $filaVisita) {
             ?>
             <tr>
                 <td>
-                    <?php echo $lugar['ip'] ?>
+                    <?php echo $filaVisita['idVisita'] ?>
                 </td>
                 <td>
-                    <?php echo $lugar['lugar'] ?>
+                    <?php echo $filaVisita['idJesuita'] ?>
                 </td>
                 <td>
-                    <?php echo $lugar['descripcion'] ?>
+                    <?php echo $filaVisita['ip'] ?>
+                </td>
+                <td>
+                    <?php echo $filaVisita['fechaHora'] ?>
                 </td>
             </tr>
             <?php

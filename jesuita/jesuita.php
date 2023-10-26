@@ -37,7 +37,7 @@
                         $this->resultadoAccion =  "El jesuita ha sido introducido con éxito";
                     } catch (mysqli_sql_exception $e) {
                         if( $e->getCode() == 1062){
-                            $this->resultadoAccion =  "Clave única duplicada";
+                            $this->resultadoAccion =  "Ya existe un jesuita con esa id";
                         }
                     }
                 }
