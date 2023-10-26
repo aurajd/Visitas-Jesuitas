@@ -1,12 +1,10 @@
 <?php
-    class Lugar{
-        private $conexion;
+    require_once "../conectar.php";
+    class Lugar extends Conectar{
         public $resultadoAccion = null;
 
         public function __construct() {
-            require '../datosConexion.php';
-            $this->conexion = new mysqli($servidorbd, $usuario, $contraseña, $basededatos);
-            $this->conexion->set_charset("utf8");
+            parent::__construct();
         }
 
         public function leer(){

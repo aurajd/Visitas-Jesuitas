@@ -1,12 +1,10 @@
 <?php
-    class Visita{
-        private $conexion;
+    require_once "../conectar.php";
+    class Visita extends Conectar{
         public $resultadoAccion = null;
 
         public function __construct() {
-            require '../datosConexion.php';
-            $this->conexion = new mysqli($servidorbd, $usuario, $contraseña, $basededatos);
-            $this->conexion->set_charset("utf8");
+            parent::__construct();
         }
 
         public function leer(){
@@ -17,19 +15,6 @@
             }
             return $filas;
         }
-
-        public function consultaIndividualLugar($ip){
-            $query = "SELECT * FROM lugar where ip = '".$ip."';";
-            $resultado = $this->conexion->query($query);
-            return $resultado->fetch_assoc();
-        }
-
-        public function consultaIndividualJesuita($idJesuita){
-            $query = "SELECT * FROM lugar where idJesuita = '".$idJesuita."';";
-            $resultado = $this->conexion->query($query);
-            return $resultado->fetch_assoc();
-        }
-
        
         public function validarAnadirFila($ip, $lugar, $descripcion){
             if(empty($ip)||empty($lugar)){
