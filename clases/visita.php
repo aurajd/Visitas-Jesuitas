@@ -18,27 +18,31 @@
             return $filas;
         }
 
-        public function consultaNombres(){
-            $query = "SELECT nombre FROM jesuita";
+        public function consultaColumnaOrdenada($columna, $tabla){
+            $query = "SELECT $columna FROM $tabla order by $columna";
             $resultado = $this->conexion->query($query);
             while($fila = $resultado->fetch_assoc()){
-                $nombre[] = $fila;
+                $nombre[] = $fila["$columna"];
             }
             return $nombre;
         }
 
-        public function consultaFirmas(){
-            $query = "SELECT firma FROM jesuita";
-            $resultado = $this->conexion->query($query);
-            while($fila = $resultado->fetch_assoc()){
-                $nombre[] = $fila;
-            }
-            return $nombre;
+        public function consultaNombre(){
+            return $this->consultaColumnaOrdenada("nombre","jesuita");
+        }
+
+        public function consultaFirma(){
+            return $this->consultaColumnaOrdenada("firma","jesuita");
+        }
+
+        public function consultaLugar(){
+            return $this->consultaColumnaOrdenada("lugar","lugar");
         }
         
         public function comprobarJesuita($nombre,$firma){
-            $query = "select * from jesuita where nombre='".$nombre."' and firma='".$firma."';";
-            $this->conexion->query($query);
+            $query = "select idJesuita from jesuita where nombre='".$nombre."' and firma='".$firma."';";
+            $idJesuita = $this->conexion->query($query);
+            var_dump($idJesuita);
             if($this->conexion->affected_rows >0){
                 return true;
             }

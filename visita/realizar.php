@@ -14,11 +14,11 @@
             <label for="nombre">Nombre:</label>
             <select name="nombre">
                 <?php
-                    require("../clases/jesuita.php");
-                    $jesuitaObj = new Jesuita();
-                    $arrayJesuitas = $jesuitaObj->leer();
-                    foreach($arrayJesuitas as $jesuita){
-                        echo "<option id=".$jesuita["nombre"].">".$jesuita["nombre"]."</option>";
+                    require("../clases/visita.php");
+                    $visita = new Visita();
+                    $arrayNombres = $visita->consultaNombre();
+                    foreach($arrayNombres as $nombre){
+                        echo "<option id=".$nombre.">".$nombre."</option>";
                     }
                 ?>
             </select>
@@ -26,14 +26,15 @@
         <div>
             <label for="firma">Firma:</label>
             <select name="firma">
-            <?php
-                    foreach($arrayJesuitas as $jesuita){
-                        echo "<option id=".$jesuita["firma"].">".$jesuita["firma"]."</option>";
+                <?php
+                    $arrayFirmas = $visita->consultaFirma();
+                    foreach($arrayFirmas as $firma){
+                        echo "<option id=".$firma.">".$firma."</option>";
                     }
                 ?>
             </select>
         </div>
-        <input type="submit" value="Iniciar sesión">
+        <input type="submit" name="inicio" value="Iniciar sesión">
     </form>
 </body>
 </html>

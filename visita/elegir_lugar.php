@@ -12,8 +12,27 @@
     <?php
         require("../clases/visita.php");
         $visita = new Visita();
-        if($visita->comprobarJesuita($_GET["nombre"],$_GET["firma"])) {
+        $idJesuita = $visita->comprobarJesuita($_GET["nombre"],$_GET["firma"]);
+        if($idJesuita) {
             echo "<p>Sesión iniciada</p>";
+            ?>
+            <form action="">
+                <input type="text" name="idJesuita" hidden>
+                <div>
+                    <label for="lugar">Lugar:</label>
+                    <select name="lugar">
+                        <?php
+                            $arrayLugares = $visita->consultaLugar();
+                            foreach($arrayLugares as $lugar){
+                                echo "<option id=".$lugar.">".$lugar."</option>";
+                            }
+                        ?>
+                    </select>
+                </div>
+                    <input type="submit" name="enviar" value="Enviar lugar">
+                
+            </form>
+            <?php
         }
         else {
             echo "<p>Jesuita y firma incorrectas</p>";
