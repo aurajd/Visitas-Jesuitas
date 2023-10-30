@@ -8,10 +8,10 @@
 
 </head>
 <body>
-    <a href="borrar.php">Volver atrás</a>
+    <a href="index.php">Volver atrás</a>
     <?php
         if(empty($_GET["ip"])){
-            echo "<h2>Debes Introducir una IP</h2>";
+            echo "<h2>Debes seleccionar un lugar</h2>";
         }else{
             $ip = $_GET["ip"];
             require "../clases/lugar.php";

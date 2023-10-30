@@ -20,7 +20,7 @@
         }
     ?>
     <form action="#.php" method="get">
-        <h2>Creación nuevos lugares</h2>
+        <h2>Creación nuevos jesuitas</h2>
         <div>
             <label for="idJesuita">Número de puesto:</label>
             <input type="text" name="idJesuita">

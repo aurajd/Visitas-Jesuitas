@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/lugar.css">
 </head>
 <body>
-    <a href="index.html">Volver atrás</a>
+    <a href="index.php">Volver atrás</a>
     <?php
         if (isset($_GET["enviar"])) {
             require "../clases/lugar.php";

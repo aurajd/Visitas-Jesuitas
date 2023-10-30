@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <a href="modificar.php">Volver atrás</a>
+    <a href="index.php">Volver atrás</a>
     <?php
         if(empty($_GET["ip"])){
             echo "<h2>Debes Introducir una IP</h2>";
