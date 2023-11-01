@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar borrado</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 
 </head>
 <body>
     <a href="borrar.php">Volver atrás</a>
     <?php
         $idJesuita = $_GET["idJesuita"];
-        require "../clases/jesuita.php";
+        require "../../controlador/jesuita.php";
         $jesuita = new Jesuita();
         $datosJesuita = $jesuita -> consultaIndividual($idJesuita);
         if(!$datosJesuita) {

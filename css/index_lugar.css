@@ -23,7 +23,7 @@ a:hover{
 
 table{
     border-collapse: collapse;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 th, td{
@@ -44,6 +44,6 @@ td a{
     margin: 0 5px
 }
 
-td:first-child{
-    width: 70%;
+td:nth-child(2){
+    width: 60%;
 }

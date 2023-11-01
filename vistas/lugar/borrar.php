@@ -1,10 +1,19 @@
+<?php
+    if(isset($_GET["borrar"])){
+        $ip = $_GET["ip"];
+        require "../../controlador/lugar.php";
+        $lugar = new Lugar();
+        $resultado= $lugar -> eliminarFila($ip);
+        header("Location:index.php?mensaje=$resultado");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar borrado</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 
 </head>
 <body>
@@ -14,13 +23,13 @@
             echo "<h2>Debes seleccionar un lugar</h2>";
         }else{
             $ip = $_GET["ip"];
-            require "../clases/lugar.php";
+            require "../../controlador/lugar.php";
             $lugar = new Lugar();
             $datosLugar = $lugar -> consultaIndividual($ip);
             if(isset($datosLugar)){
                 ?>
                 <h2>¿Estás seguro de querer eliminar el lugar con los siguientes datos?</h2>
-                <form action="borrar.php">
+                <form action="#">
                     <div>
                         <label for="ip">IP:</label>
                         <?php

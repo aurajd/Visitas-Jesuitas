@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar jesuita</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 </head>
 <body>
     <a href="index.html">Volver atrás</a>
     <?php
         if(isset($_GET["borrar"])){
             $idJesuita = $_GET["idJesuita"];
-            require "../clases/jesuita.php";
+            require "../../controlador/jesuita.php";
             $jesuita = new Jesuita();
             $resultado= $jesuita -> eliminarFila($idJesuita);
             echo "<h2>".$resultado."</h2>";

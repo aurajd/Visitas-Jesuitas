@@ -1,10 +1,24 @@
+<?php
+    if(isset($_GET["modificar"])){
+        require "../../controlador/lugar.php";
+        $lugarModificar = new Lugar();
+        $ipOriginal = $_GET["ipOriginal"];
+        $ip = $_GET["ip"];
+        $lugar = $_GET["lugar"];
+        $descripcion = $_GET["descripcion"];
+        //Esto da fatal error si cambiamos la ip de un lugar con visitas realizada, porque no tiene on update cascade
+        //Es un problema de la base de datos no del programa 
+        $resultado = $lugarModificar->modificarFila($ipOriginal,$ip,$lugar,$descripcion);
+        header("Location:index.php?mensaje=$resultado");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar lugar</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 
 </head>
 <body>
@@ -14,7 +28,7 @@
             echo "<h2>Debes Introducir una IP</h2>";
         }else{
             $ip = $_GET["ip"];
-            require "../clases/lugar.php";
+            require "../../controlador/lugar.php";
             $lugar = new Lugar();
             $datosLugar = $lugar -> consultaIndividual($ip);
             if(isset($datosLugar)){

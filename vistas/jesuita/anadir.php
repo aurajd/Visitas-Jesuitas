@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir jesuita</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 </head>
 <body>
     <a href="index.html">Volver atrás</a>
     <?php
         if (isset($_GET["enviar"])) {
-            require "../clases/jesuita.php";
+            require "../../controlador/jesuita.php";
             $jesuita = new Jesuita();
             $idJesuita = $_GET["idJesuita"];
             $nombre = $_GET["nombre"];

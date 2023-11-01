@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir lugar</title>
-    <link rel="stylesheet" href="../css/lugar.css">
+    <link rel="stylesheet" href="../../css/lugar.css">
 </head>
 <body>
     <a href="index.php">Volver atrás</a>
     <?php
         if (isset($_GET["enviar"])) {
-            require "../clases/lugar.php";
+            require "../../controlador/lugar.php";
             $lugarAnadir = new Lugar();
             $ip = $_GET["ip"];
             $lugar = $_GET["lugar"];

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lugar</title>
-    <link rel="stylesheet" href="../css/visita.css">
+    <link rel="stylesheet" href="../../css/visita.css">
 </head>
 <body>
     <a href="index.html">Volver atrás</a>
     <main>
         <?php
-            require "../clases/visita.php";
+            require "../../controlador/visita.php";
             $visita = new Visita();
         ?>
         <table>

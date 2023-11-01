@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realizar visita</title>
-    <link rel="stylesheet" href="../css/visita.css">
+    <link rel="stylesheet" href="../../css/visita.css">
 
 </head>
 <body>
@@ -14,7 +14,7 @@
             <label for="nombre">Nombre:</label>
             <select name="nombre">
                 <?php
-                    require("../clases/visita.php");
+                    require "../../controlador/visita.php";
                     $visita = new Visita();
                     $arrayNombres = $visita->consultaNombre();
                     foreach($arrayNombres as $nombre){
