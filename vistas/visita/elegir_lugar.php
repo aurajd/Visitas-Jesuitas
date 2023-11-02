@@ -10,7 +10,7 @@
 <body>
     <a href="realizar.php">Volver atrás</a>
     <?php
-        require("../clases/visita.php");
+        require("../../controlador/visita.php");
         $visita = new Visita();
         $idJesuita = $visita->comprobarJesuita($_GET["nombre"],$_GET["firma"]);
         if($idJesuita) {

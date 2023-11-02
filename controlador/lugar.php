@@ -1,71 +1,38 @@
 <?php
-    require_once "../../modelo/modelo_lugar.php";
+    require_once "../../modelo/mlugar.php";
     class Lugar{
-        private $resultadoAccion = null;
         private $modeloLugar = null;
+        private $resultadoAccion = null;
 
         public function __construct() {
-            $this->modeloLugar = new ModeloLugar();
+            $this->modeloLugar = new MLugar();
         }
 
         public function leer(){
-            $resultados = $this->modeloLugar->leer();
-            return $resultados;
+            $this->resultadoAccion = $this->modeloLugar->leer();
+            return $this->resultadoAccion;
         }
 
         public function consultaIndividual($ip){
-            $resultado = $this->modeloLugar->consultaIndividual($ip);
-            return $resultado;
+            $this->resultadoAccion = $this->modeloLugar->consultaIndividual($ip);
+            return $this->resultadoAccion;
         }
 
         public function eliminarFila($ip){
-            try{
-                $this->modeloLugar->eliminarFila($ip);
-                $this->resultadoAccion =  "El lugar ha sido eliminado con éxito";
-            } catch (mysqli_sql_exception $e) {
-                if( $e->getCode() == 1451){
-                    $this->resultadoAccion = "El lugar tiene visitas realizadas, no se puede modificar";
-                }
-                else {
-                    $this->resultadoAccion = "Error inesperado, consulte con el administrador";
-                }
-            }
+            $this->resultadoAccion = $this->modeloLugar->eliminarFila($ip);
             return $this->resultadoAccion;
         }
 
         public function anadirFila($ip, $lugar, $descripcion){
             if($this->validar($ip, $lugar)){
-                try{
-                    $this->modeloLugar->anadirFila($ip, $lugar, $descripcion);
-                    $this->resultadoAccion =  "El lugar ha sido introducido con éxito";
-                } catch (mysqli_sql_exception $e) {
-                    if( $e->getCode() == 1062){
-                        $this->resultadoAccion =  "Ya existe un lugar con esa IP";
-                    }
-                    else {
-                        $this->resultadoAccion = "Error inesperado, consulte con el administrador";
-                    }
-                }
+                $this->resultadoAccion = $this->modeloLugar->anadirFila($ip, $lugar, $descripcion);
             }
             return $this->resultadoAccion;
         }
 
         public function modificarFila($ipOriginal, $ip, $lugar, $descripcion){
             if($this->validar($ip,$lugar)) {
-                try{
-                    $this->modeloLugar->modificarFila( $ipOriginal, $ip, $lugar, $descripcion );
-                    $this->resultadoAccion =  "Modificación realizada con éxito";
-                } catch (mysqli_sql_exception $e) {
-                    if( $e->getCode() == 1062){
-                        $this->resultadoAccion =  "Ya existe un lugar con esa IP";
-                    }
-                    if( $e->getCode() == 1451){
-                        $this->resultadoAccion = "El lugar tiene visitas realizadas, no se puede modificar la ip";
-                    }
-                    else {
-                        $this->resultadoAccion = "Error inesperado, consulte con el administrador";
-                    }
-                }
+                $this->resultadoAccion = $this->modeloLugar->modificarFila( $ipOriginal, $ip, $lugar, $descripcion );
             }
             return $this->resultadoAccion;
         }

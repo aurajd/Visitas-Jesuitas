@@ -16,8 +16,6 @@
             $idJesuita = $_GET["idJesuita"];
             $nombre = $_GET["nombre"];
             $firma = $_GET["firma"];
-            //Esto da fatal error si cambiamos la ip de un lugar con visitas realizada, porque no tiene on update cascade
-            //Es un problema de la base de datos no del programa 
             $resultado = $jesuita->modificarFila($idJesuitaOriginal,$idJesuita,$nombre,$firma);
             echo "<h3>".$resultado."</h3>";
         }

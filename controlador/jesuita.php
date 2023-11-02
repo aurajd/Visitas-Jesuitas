@@ -1,77 +1,39 @@
 <?php
-    require_once "conectar.php";
-    class Jesuita extends Conectar{
+    require_once "../../modelo/mjesuita.php";
+    class Jesuita{
+        private $modeloJesuita = null;
         public $resultadoAccion = null;
 
         public function __construct() {
-            parent::__construct();
-        }
-
-        public function leer(){
-            $query = "SELECT * FROM jesuita";
-            $resultado = $this->conexion->query($query);
-            while($fila = $resultado->fetch_assoc()){
-                $filas[] = $fila;
-            }
-            return $filas;
+            $this->modeloJesuita = new MJesuita();
         }
 
         public function consultaIndividual($id){
             if(!$this->validarConsultaIndividual($id))
                 return false;
-            $query = "SELECT * FROM jesuita where idJesuita = '".$id."';";
-            $resultado = $this->conexion->query($query);
-            $jesuita = $resultado->fetch_assoc();
-            if(empty($jesuita)){
-                $this->resultadoAccion =  "El número de puesto no corresponde con ningún jesuita";
+            $resultado = $this->modeloJesuita->consultaIndividual($id);
+            if($resultado === false){
+                $this->resultadoAccion = $this->modeloJesuita->resultadoAccion;
                 return false;
             }
-            return $jesuita;
+            return $resultado;
         }
 
         public function eliminarFila($id){
-            $consultaEliminar = "DELETE FROM jesuita WHERE idJesuita = ".$id.";";
-            $this->conexion->query($consultaEliminar);
-            $this->resultadoAccion = "Borrado con éxito";
-            return $this->resultadoAccion;
+            $resultado = $this->modeloJesuita->eliminarFila($id);
+            return $resultado;
         }
 
         public function AnadirFila($id, $nombre, $firma){
             if($this->validar($id, $nombre, $firma)){
-                $consultaAnadir = "INSERT INTO jesuita VALUES (". $id.",'".$nombre."','".$firma."');";
-                try {
-                    $this->conexion -> query($consultaAnadir);
-                    $this->resultadoAccion =  "El jesuita ha sido introducido con éxito";
-                } catch (mysqli_sql_exception $e) {
-                    if( $e->getCode() == 1062){
-                        $this->resultadoAccion =  "Ya existe un jesuita con ese número de puesto";
-                    }
-                    else {
-                        echo "<p>".$e->getMessage()."</p>";
-                        $this->resultadoAccion = "Error inesperado, consulte con el administrador";
-                    }
-                }
+                $this->resultadoAccion = $this->modeloJesuita->anadirFila($id,$nombre,$firma);
             }
             return $this->resultadoAccion;
         }
 
         public function modificarFila($idOriginal, $id, $nombre, $firma){
             if($this->validar($id, $nombre, $firma)){
-                $consultaModificacion = "UPDATE jesuita 
-                SET idJesuita = ".$id.", nombre = '".$nombre."', firma = '".$firma."'
-                WHERE idJesuita = ".$idOriginal.";";
-                try {
-                    $this->conexion -> query($consultaModificacion);
-                    $this->resultadoAccion =  "El jesuita ha sido modificado con éxito";
-                } catch (mysqli_sql_exception $e) {
-                    if( $e->getCode() == 1062){
-                        $this->resultadoAccion =  "Ya existe un jesuita con ese número de puesto";
-                    }
-                    else {
-                        echo "<p>".$e->getMessage()."</p>";
-                        $this->resultadoAccion = "Error inesperado, consulte con el administrador";
-                    }
-                }
+                $this->resultadoAccion = $this->modeloJesuita->modificarFila($idOriginal,$id,$nombre,$firma);
             }
             return $this->resultadoAccion;
         }

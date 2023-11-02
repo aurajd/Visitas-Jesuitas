@@ -1,52 +1,35 @@
 <?php
-    require_once "conectar.php";
-    class Visita extends Conectar{
-        public $resultadoAccion = null;
+    require_once "../../modelo/mvisita.php";
+    class Visita{
+        private $modeloVisita = null;
 
         public function __construct() {
-            parent::__construct();
+            $this->modeloVisita = new MVisita();
         }
+
 
         public function leer(){
-            $query = "SELECT * FROM visita 
-                ORDER BY fechaHora DESC
-                LIMIT 5";
-            $resultado = $this->conexion->query($query);
-            while($fila = $resultado->fetch_assoc()){
-                $filas[] = $fila;
-            }
-            return $filas;
+            $resultado = $this->modeloVisita->leer();
+            return $resultado;
         }
-
-        public function consultaColumnaOrdenada($columna, $tabla){
-            $query = "SELECT $columna FROM $tabla order by $columna";
-            $resultado = $this->conexion->query($query);
-            while($fila = $resultado->fetch_assoc()){
-                $nombre[] = $fila["$columna"];
-            }
-            return $nombre;
-        }
-
         public function consultaNombre(){
-            return $this->consultaColumnaOrdenada("nombre","jesuita");
+            $resultado = $this->modeloVisita->consultaColumnaOrdenada("nombre","jesuita");
+            return $resultado;
         }
 
         public function consultaFirma(){
-            return $this->consultaColumnaOrdenada("firma","jesuita");
+            $resultado = $this->modeloVisita->consultaColumnaOrdenada("firma","jesuita");
+            return $resultado;
         }
 
         public function consultaLugar(){
-            return $this->consultaColumnaOrdenada("lugar","lugar");
+            $resultado = $this->modeloVisita->consultaColumnaOrdenada("lugar","lugar");
+            return $resultado;
         }
         
         public function comprobarJesuita($nombre,$firma){
-            $query = "select idJesuita from jesuita where nombre='".$nombre."' and firma='".$firma."';";
-            $idJesuita = $this->conexion->query($query);
-            var_dump($idJesuita);
-            if($this->conexion->affected_rows >0){
-                return true;
-            }
-            return false;
+            $resultado = $this->modeloVisita->comprobarJesuita($nombre,$firma);
+            return $resultado;
         }
     }
 ?>
